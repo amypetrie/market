@@ -22,4 +22,8 @@ class Vendor
     @inventory[item] += number
   end
 
+  def reduce_inventory(item, new_amount)
+    @inventory[item] = new_amount
+  end
+
 end

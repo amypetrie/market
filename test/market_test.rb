@@ -146,6 +146,7 @@ class TestMarket < Minitest::Test
     market.add_vendor(vendor_3)
 
     assert_equal true, market.sell("Banana Nice Cream", 5)
+    assert_equal 60, vendor_3.check_stock("Peaches")
   end
 
 end

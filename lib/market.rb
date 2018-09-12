@@ -50,14 +50,20 @@ class Market < Vendor
     create_inventory
     if quantity > @total_inventory[item]
       false
-    else true
+    else
+      reduce_inventory_once_sold(item, quantity)
+      return true
     end
   end
-    #treduce stock of vendors
-    #by order added and sell from first vendor with it
 
-  def reduce_invetory_once_sold(item, quantity)
-
+  def reduce_inventory_once_sold(item, quantity)
+    @vendors.each do |vendor|
+      if vendor.inventory.include?(item) && (vendor.inventory[item] > 0)
+        amount_still_needed = quantity - vendor.inventory[item]
+        new_amount = vendor.inventory[item] - (quantity - amount_still_needed)
+        vendor.reduce_inventory(item, new_amount)
+      end
+    break if amount_still_needed == 0
   end
-
+end
 end
