@@ -43,7 +43,21 @@ class Market < Vendor
         end
       end
     end
-    return @total_inventory
+    @total_inventory
+  end
+
+  def sell(item, quantity)
+    create_inventory
+    if quantity > @total_inventory[item]
+      false
+    else true
+    end
+  end
+    #treduce stock of vendors
+    #by order added and sell from first vendor with it
+
+  def reduce_invetory_once_sold(item, quantity)
+
   end
 
 end
