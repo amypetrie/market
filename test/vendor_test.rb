@@ -30,16 +30,16 @@ class TestVendor < Minitest::Test
 
   def test_stock_adds_items_to_inventory
     vendor = Vendor.new("Rocky Mountain Fresh")
-    vendor.stock("peaches", 30)
+    vendor.stock("Peaches", 30)
 
     assert_equal 30, vendor.check_stock("peaches")
   end
 
   def test_stock_adds_items_to_inventory
     vendor = Vendor.new("Rocky Mountain Fresh")
-    vendor.stock("peaches", 30)
+    vendor.stock("Peaches", 30)
 
-    assert_equal 30, vendor.check_stock("peaches")
+    assert_equal 30, vendor.check_stock("Peaches")
   end
 
   def test_the_inventory_is_additive_when_stocked
@@ -48,7 +48,7 @@ class TestVendor < Minitest::Test
     vendor.stock("Peaches", 25)
     vendor.stock("Tomatoes", 12)
     expected = {"Peaches" => 55, "Tomatoes" => 12}
-    
+
     assert_equal expected, vendor.inventory
   end
 

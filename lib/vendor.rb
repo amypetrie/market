@@ -9,7 +9,7 @@ class Vendor
   end
 
   def check_stock(wanted_item)
-    wanted_item = wanted_item.capitalize
+    wanted_item = wanted_item
     if @inventory.keys.include?(wanted_item)
       @inventory[wanted_item]
     else @inventory[wanted_item] = 0
@@ -17,7 +17,7 @@ class Vendor
   end
 
   def stock(item, number)
-    item = item.capitalize
+    item = item
     check_stock(item)
     @inventory[item] += number
   end

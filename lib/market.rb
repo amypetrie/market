@@ -1,11 +1,13 @@
-class Market < Vendor 
+class Market < Vendor
 
   attr_reader :name,
-              :vendors
+              :vendors,
+              :total_inventory
 
-  def initialize(name, vendors=[])
+  def initialize(name, vendors=[], total_inventory=Hash.new(0))
     @name = name
     @vendors = vendors
+    @total_inventory = total_inventory
   end
 
   def add_vendor(vendor_object)
@@ -32,9 +34,16 @@ class Market < Vendor
     #returns list of all items vendors have in stock alphabeticaly, items listed once
   end
 
-  def total_inventory
-
-    #reports qunaitites of all items sold - hash with
-    #items as keys and quants as values
+  def create_inventory
+    @vendors.each do |vendor|
+      vendor.inventory.each do |item, number|
+        if @total_inventory.keys.include?(item)
+          @total_inventory[item] += number
+        else @total_inventory[item] = number
+        end
+      end
+    end
+    return @total_inventory
   end
+
 end

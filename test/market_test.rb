@@ -92,7 +92,7 @@ class TestMarket < Minitest::Test
     market.add_vendor(vendor_3)
 
     expected = {"Peaches"=>100, "Tomatoes"=>7, "Banana Nice Cream"=>50, "Peach-Raspberry Nice Cream"=>25}
-    assert_equal expected, market.total_inventory
+    assert_equal expected, market.create_inventory
   end
 
 end
