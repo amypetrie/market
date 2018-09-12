@@ -1,4 +1,4 @@
-class Market
+class Market < Vendor 
 
   attr_reader :name,
               :vendors
@@ -17,7 +17,6 @@ class Market
     @vendors.inject([]) do |name_array, vendor|
       name_array << vendor.name
     end
-    #returns array of vendors names
   end
 
   def vendors_that_sell(item_string)
@@ -27,7 +26,15 @@ class Market
       else vendor_array
       end
     end
-    #list of vendors w items in stock
   end
 
+  def sorted_item_list
+    #returns list of all items vendors have in stock alphabeticaly, items listed once
+  end
+
+  def total_inventory
+
+    #reports qunaitites of all items sold - hash with
+    #items as keys and quants as values
+  end
 end
