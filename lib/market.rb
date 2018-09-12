@@ -31,7 +31,7 @@ class Market < Vendor
   end
 
   def sorted_item_list
-    #returns list of all items vendors have in stock alphabeticaly, items listed once
+    create_inventory.keys.sort
   end
 
   def create_inventory
